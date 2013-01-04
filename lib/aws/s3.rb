@@ -36,6 +36,14 @@ module AWS
       URI.escape(path.to_s, UNSAFE_URI)
     end
 
+    def self.escape_uri_component(path)
+      escaped = escape_uri(path)
+      escaped.gsub!(/=/, '%3D')
+      escaped.gsub!(/&/, '%26')
+      escaped.gsub!(/;/, '%3B')
+      escaped
+    end
+
     Base.class_eval do
       include AWS::S3::Connection::Management
     end
