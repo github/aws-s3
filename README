@@ -72,7 +72,7 @@ Assuming the name you chose isn't already taken, your new bucket will now appear
   Service.buckets
   # => [#<AWS::S3::Bucket @attributes={"name"=>"jukebox"}>]
 
-Once you have succesfully created a bucket you can fetch it by name using Bucket.find.
+Once you have succesfully created a bucket you can you can fetch it by name using Bucket.find.
 
   music_bucket = Bucket.find('jukebox')
 
@@ -195,10 +195,10 @@ You can change the content type as well if you like:
   song.content_type = 'application/pdf'
   song.store
 
-(Keep in mind that due to limitiations in S3's exposed API, the only way to change things like the content_type
+(Keep in mind that due to limitations in S3's exposed API, the only way to change things like the content_type
 is to PUT the object onto S3 again. In the case of large files, this will result in fully re-uploading the file.)
 
-A bevie of information about an object can be had using the <tt>about</tt> method:
+A bevy of information about an object can be had using the <tt>about</tt> method:
 
   pp song.about
   {"last-modified"    => "Sat, 28 Oct 2006 21:29:26 GMT",
@@ -531,7 +531,7 @@ You could use this information to redisplay the error in a way you see fit, or j
 ==== Accessing the last request's response
 
 Sometimes methods that make requests to the S3 servers return some object, like a Bucket or an S3Object. 
-Othertimes they return just <tt>true</tt>. Other times they raise an exception that you may want to rescue. Despite all these 
+Other times they return just <tt>true</tt>. Other times they raise an exception that you may want to rescue. Despite all these 
 possible outcomes, every method that makes a request stores its response object for you in Service.response. You can always 
 get to the last request's response via Service.response.
 
