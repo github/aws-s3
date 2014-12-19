@@ -64,7 +64,7 @@ module AWS
         request      = request_method(:get).new(path, {})
         query_string = query_string_authentication(request, options)
         subdomain = if bucket = options[:bucket]
-          bucket + "."
+          AWS::S3.escape_uri_component(bucket) + "."
         end
         "#{protocol(options)}#{subdomain}#{http.address}#{port_string}#{path}".tap do |url|
           (url << (path[/\?/] ? '&' : '?') << "#{query_string}") if authenticate

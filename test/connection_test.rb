@@ -121,8 +121,8 @@ class ConnectionTest < Test::Unit::TestCase
 
   def test_url_for_with_bucket_subdomain
     connection = Connection.new(:access_key_id => '123', :secret_access_key => 'abc', :server => 'example.org')
-    url = connection.url_for("/foo?response-content-disposition=a", :bucket => "sub")
-    assert_match %r{\Ahttp://sub.example\.org/foo\?response-content-disposition=a&}, url
+    url = connection.url_for("/foo?response-content-disposition=a", :bucket => "abc&def")
+    assert_match %r{\Ahttp://abc%26def.example\.org/foo\?response-content-disposition=a&}, url
     assert_match "&AWSAccessKeyId", url
   end
 
